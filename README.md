@@ -1,4 +1,4 @@
-# RainLab.Blog-custom-for-mjournal-theme
+# Plugin RainLab.Blog custom for mjournal theme
 
 The plugin is made specifically for the theme Material Journal for octoberCMS http://octobercms.com/theme/artdark-materialjournal
 
