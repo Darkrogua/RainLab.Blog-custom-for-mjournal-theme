@@ -1,0 +1,85 @@
+fields:
+    name:
+        label: 'rainlab.blog::lang.category.name'
+        placeholder: 'rainlab.blog::lang.category.name_placeholder'
+        span: left
+        type: text
+    slug:
+        label: 'rainlab.blog::lang.category.slug'
+        span: right
+        placeholder: 'rainlab.blog::lang.category.slug_placeholder'
+        preset: name
+        type: text
+    description:
+        label: 'rainlab.blog::lang.category.description'
+        size: large
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+tabs:
+    fields:
+        seo_title:
+            label: Title
+            span: full
+            type: text
+            tab: SEO
+        seo_description:
+            label: Description
+            size: small
+            span: full
+            type: textarea
+            tab: SEO
+        seo_keywords:
+            label: Keywords
+            span: full
+            type: text
+            tab: SEO
+        section1:
+            label: 'Background settings'
+            span: full
+            type: section
+            tab: Appearance
+        background_color:
+            label: 'Background-color tiles category'
+            span: auto
+            type: colorpicker
+            comment: 'Choose the color of the category tile, it is especially important if you want to set a PNG format image'
+            tab: Appearance
+        act_cat_back:
+            label: 'Using image background'
+            span: auto
+            type: switch
+            comment: 'Allows you to set an image in a background category'
+            tab: Appearance
+        img_category:
+            label: 'Image background category'
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: left
+            trigger:
+                action: show
+                field: act_cat_back
+                condition: checked
+            type: fileupload
+            comment: '(recommended  widht = height)'
+            tab: Appearance
+        section2:
+            label: 'Text settings'
+            span: full
+            type: section
+            tab: Appearance
+        color_title:
+            label: 'Color text tiles category'
+            span: left
+            type: colorpicker
+            comment: 'Choose the color text of the category tile'
+            tab: Appearance
+        c_c_class:
+            label: 'Custom add class'
+            span: right
+            type: text
+            comment: 'Enter custom class (exemple - my-editor-2)'
+            tab: Appearance

@@ -1,0 +1,160 @@
+fields:
+    title:
+        label: 'rainlab.blog::lang.post.title'
+        span: left
+        placeholder: 'rainlab.blog::lang.post.title_placeholder'
+        type: text
+    slug:
+        label: 'rainlab.blog::lang.post.slug'
+        span: right
+        placeholder: 'rainlab.blog::lang.post.slug_placeholder'
+        preset:
+            field: title
+            type: slug
+        type: text
+    toolbar:
+        type: partial
+        path: post_toolbar
+        cssClass: collapse-visible
+secondaryTabs:
+    fields:
+        content:
+            tab: 'rainlab.blog::lang.post.tab_edit'
+            type: RainLab\Blog\FormWidgets\BlogMarkdown
+            cssClass: 'field-slim blog-post-preview'
+            stretch: true
+            mode: split
+        categories:
+            tab: 'rainlab.blog::lang.post.tab_categories'
+            type: relation
+            commentAbove: 'rainlab.blog::lang.post.categories_comment'
+            placeholder: 'rainlab.blog::lang.post.categories_placeholder'
+        published:
+            tab: 'rainlab.blog::lang.post.tab_manage'
+            label: 'rainlab.blog::lang.post.published'
+            span: left
+            type: checkbox
+        published_at:
+            tab: 'rainlab.blog::lang.post.tab_manage'
+            label: 'rainlab.blog::lang.post.published_on'
+            span: left
+            cssClass: checkbox-align
+            type: datepicker
+            mode: datetime
+            trigger:
+                action: enable
+                field: published
+                condition: checked
+        excerpt:
+            tab: 'rainlab.blog::lang.post.tab_manage'
+            label: 'rainlab.blog::lang.post.excerpt'
+            type: textarea
+            size: small
+        featured_images:
+            tab: 'rainlab.blog::lang.post.tab_manage'
+            label: 'rainlab.blog::lang.post.featured_images'
+            type: fileupload
+            mode: image
+            imageWidth: 200
+            imageHeight: 200
+        c_autor:
+            label: 'Custom author post'
+            span: full
+            type: switch
+            comment: 'Create your own author, only for this article'
+            tab: Author
+        a_name:
+            label: 'Author name'
+            span: left
+            trigger:
+                action: show
+                field: c_autor
+                condition: checked
+            type: text
+            comment: 'Enter the full name of the new author (exemple `Mike Jonson`)'
+            tab: Author
+        a_avatar:
+            label: 'Avatar author'
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: right
+            trigger:
+                action: show
+                field: c_autor
+                condition: checked
+            type: fileupload
+            comment: 'Select avatar author(recommended  widht = height)'
+            tab: Author
+        a_about:
+            label: 'About author'
+            size: large
+            span: full
+            trigger:
+                action: show
+                field: c_autor
+                condition: checked
+            type: richeditor
+            comment: 'Write the text about the author, it will be displayed under the avatar ( if you leave the field blank, there will not be an inscription)'
+            tab: Author
+        a_other_article:
+            label: 'Do not recommend other articles'
+            span: left
+            type: switch
+            tab: 'Related Articles'
+        a_last_article:
+            label: 'Do not show last article'
+            span: right
+            type: switch
+            tab: 'Related Articles'
+        section1:
+            label: 'Background settings'
+            span: full
+            type: section
+            tab: Appearance
+        act_col_backg:
+            label: 'Using color background'
+            span: left
+            type: switch
+            comment: 'Allows you to set an color in a background post'
+            tab: Appearance
+        img_column:
+            label: 'Image column type'
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: right
+            type: fileupload
+            comment: 'Special image for the type of article in the column blocks'
+            tab: Appearance
+        background_color:
+            label: 'Background-color post'
+            span: right
+            trigger:
+                action: show
+                field: act_col_backg
+                condition: checked
+            type: colorpicker
+            comment: 'Choose the color of the post tile, it is especially important if you want to set a PNG format image'
+            tab: Appearance
+        section2:
+            label: 'Text settings'
+            span: full
+            type: section
+            tab: Appearance
+        color_title:
+            label: 'Color text  post'
+            span: left
+            type: colorpicker
+            comment: 'Choose the color text post'
+            tab: Appearance
+        c_p_class:
+            label: 'Custom add class'
+            span: right
+            type: text
+            comment: 'Enter custom class (exemple - my-editor-2)'
+            tab: Appearance
