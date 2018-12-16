@@ -12,11 +12,11 @@ class BuilderTableUpdateRainlabBlogCategories extends Migration
             $table->string('seo_title');
             $table->text('seo_description');
             $table->string('seo_keywords');
-            $table->string('background_color');
-            $table->boolean('act_cat_back');
-            $table->string('color_title');
-            $table->string('c_c_class');
-        });
+            $table->string('background_color')->nullable();
+            $table->boolean('act_cat_back')->nullable();
+            $table->string('color_title')->nullable();
+            $table->string('c_c_class')->nullable();
+        }
     }
     
     public function down()
