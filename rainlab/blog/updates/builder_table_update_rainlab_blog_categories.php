@@ -16,7 +16,7 @@ class BuilderTableUpdateRainlabBlogCategories extends Migration
             $table->boolean('act_cat_back')->nullable();
             $table->string('color_title')->nullable();
             $table->string('c_c_class')->nullable();
-        }
+        });
     }
     
     public function down()
