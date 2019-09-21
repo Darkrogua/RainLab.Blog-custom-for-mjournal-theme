@@ -1,15 +1,16 @@
 fields:
+
     name:
-        label: 'rainlab.blog::lang.category.name'
-        placeholder: 'rainlab.blog::lang.category.name_placeholder'
+        label: rainlab.blog::lang.category.name
+        placeholder: rainlab.blog::lang.category.name_placeholder
         span: left
-        type: text
+
     slug:
-        label: 'rainlab.blog::lang.category.slug'
+        label: rainlab.blog::lang.category.slug
         span: right
-        placeholder: 'rainlab.blog::lang.category.slug_placeholder'
+        placeholder: rainlab.blog::lang.category.slug_placeholder
         preset: name
-        type: text
+
     description:
         label: 'rainlab.blog::lang.category.description'
         size: large

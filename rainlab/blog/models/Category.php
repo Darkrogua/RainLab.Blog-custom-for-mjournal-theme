@@ -41,6 +41,11 @@ class Category extends Model
             'table' => 'rainlab_blog_posts_categories',
             'order' => 'published_at desc',
             'scope' => 'isPublished'
+        ],
+        'posts_count' => ['RainLab\Blog\Models\Post',
+            'table' => 'rainlab_blog_posts_categories',
+            'scope' => 'isPublished',
+            'count' => true
         ]
     ];
 
@@ -63,22 +68,30 @@ class Category extends Model
 
     public function getPostCountAttribute()
     {
-        return $this->posts()->count();
+        return optional($this->posts_count->first())->count ?? 0;
     }
+
+    public function getNestedPostCount()
+    {
+        return $this->post_count + $this->children->sum(function ($category) {
+            return $category->getNestedPostCount();
+        });
+    }
+
 
     /**
      * Sets the "url" attribute with a URL to this object
      * @param string $pageName
      * @param Cms\Classes\Controller $controller
      */
-    public function setUrl($pageName, $controller)
+    public function setUrl($pageName, $controller, array $urlParams = array())
     {
         $params = [
-            'id'   => $this->id,
-            'slug' => $this->slug,
+            array_get($urlParams, 'id', 'id')   => $this->id,
+            array_get($urlParams, 'slug', 'slug')  => $this->slug,
         ];
 
-        return $this->url = $controller->pageUrl($pageName, $params);
+        return $this->url = $controller->pageUrl($pageName, $params, false);
     }
 
     /**
@@ -205,7 +218,7 @@ class Category extends Model
                 return;
             }
 
-            $pageUrl = URL::to($pageUrl);
+            $pageUrl = Url::to($pageUrl);
 
             $result = [];
             $result['url'] = $pageUrl;
@@ -248,7 +261,7 @@ class Category extends Model
                 $categoryItem = [
                     'title' => $category->name,
                     'url'   => self::getCategoryPageUrl($item->cmsPage, $category, $theme),
-                    'mtime' => $category->updated_at,
+                    'mtime' => $category->updated_at
                 ];
 
                 $categoryItem['isActive'] = $categoryItem['url'] == $url;
